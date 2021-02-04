@@ -1,11 +1,18 @@
 <!doctype>
 <head>
      <link rel="stylesheet" href={{url_for('static',filename='style.css')}}>
+     <script src={{url_for('static',filename='index.js')}} ></script>
+
+
 </head>
 <body id="body">
 
-    <h1 id="nav">
+    <div id="nav">
         
-    </h1>
-    <h1 id="main">main</h1>
+        <input type="text" placeholder="Search..">
+        <button onclick="search()">
+            <img src={{url_for('static',filename='/images/search_icon.jpg')}}/>
+        </button>
+    </div>
+    <div id="main">main</div>
 </body>

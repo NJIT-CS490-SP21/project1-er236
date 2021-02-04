@@ -1,21 +1,24 @@
+
 body{
     display:grid;
     grid-template-areas: "Nav"
                         "Main";
-            
+    grid-template-columns:100%;
+    grid-template-row: 50px auto;
     background-color: #f5f5dc;
     font-family: Arial, sans-serif;
+    
 
 }
-.Nav{
+#nav{
     grid-area: Nav;
+    overflow:hidden;
 }
-.Main{
-    grid-area: main;
+
+#nav button img {
+    width:20px;
+    height:20px;
 }
-.list{
-    font-size: 36px;
-}
-#favorite{
-    background-color:blue;
+#main{
+    grid-area: Main;
 }
