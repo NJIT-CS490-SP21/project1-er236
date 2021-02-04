@@ -1,0 +1,21 @@
+body{
+    display:grid;
+    grid-template-areas: "Nav"
+                        "Main";
+            
+    background-color: #f5f5dc;
+    font-family: Arial, sans-serif;
+
+}
+.Nav{
+    grid-area: Nav;
+}
+.Main{
+    grid-area: main;
+}
+.list{
+    font-size: 36px;
+}
+#favorite{
+    background-color:blue;
+}
