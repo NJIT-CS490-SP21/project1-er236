@@ -4,7 +4,7 @@ window.onload = (event) => {
 
 };
 function search(){
-    fetch("https://cd8b221068af435fb1bc75eb15bcba3b.vfs.cloud9.us-east-1.amazonaws.com/spotify")
+    fetch("/spotify")
     .then(reply=>reply.json())
     .then(response=>{
         response["albums"]["items"].map(item=>{
