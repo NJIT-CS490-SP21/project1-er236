@@ -14,7 +14,7 @@ def spotify():
        },
        
        headers={
-          "Authorization":"Basic %s" %  base64.b64encode((os.getenv("api_id")+":"+os.getenv("api_secret")).encode()).decode(),
+          "Authorization":"Basic %s" %  base64.b64encode((os.getenv("spotify_id")+":"+os.getenv("spotify_secret")).encode()).decode(),
           "Content-Type": "application/x-www-form-urlencoded"
        }
     ).json()
