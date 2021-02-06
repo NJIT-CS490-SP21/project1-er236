@@ -7,8 +7,11 @@ function search(){
     fetch("/spotify")
     .then(reply=>reply.json())
     .then(response=>{
-        response["albums"]["items"].map(item=>{
-            //console.log(item);
+        console.log(response);
+        mainDiv.innerHTML="";
+        response["tracks"].map(item=>{
+            
+            
             var main = document.createElement("div");
             main.classList.add("item");
             var header=document.createElement("div");
@@ -17,15 +20,19 @@ function search(){
             var title=document.createElement("a");
             title.innerHTML=item["name"];
             
-            title.href=item["external_urls"]["spotify"];
+            if (item["preview_url"]==null){
+                title.href=item["external_urls"]["spotify"];
+
+            }
+            else{
+                title.href=item["preview_url"];
+            }
             var img = document.createElement("img");
             img.classList.add("img");
 
             
            
             
-            console.log(item)
-
             img.src = item["images"][0]["url"]; 
             header.appendChild(title)
             header.innerHTML=header.innerHTML+" By: " +item["artists"].map(artist=>{
