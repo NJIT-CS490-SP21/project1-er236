@@ -8,11 +8,19 @@
 <body id="body">
 
     <div id="nav">
-        
-        <input type="text" placeholder="Search..">
-        <button onclick="search()">
-            <img src={{url_for('static',filename='/images/search_icon.jpg')}}/>
-        </button>
+        <div id="searchDiv">
+            <input type="text" placeholder="Search.." id="search" value="hello">
+            <button onclick="search()" id="search_button">
+                <img src={{url_for('static',filename='/images/search_icon.jpg')}} id="search_icon"/>
+            </button>
+        </div>
+        <div id="searchItems"></div>
     </div>
     <div id="main"></div>
+    <div id="Info">
+            <audio id="audio" controls style="display:none">
+                  <source id="audioSource"></source>
+            </audio>
+            <iframe  id="lyrics"></iframe>
+    </div>
 </body>

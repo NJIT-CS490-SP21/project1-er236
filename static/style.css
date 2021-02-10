@@ -1,9 +1,8 @@
-
 body{
     display:grid;
-    grid-template-areas: "Nav"
-                        "Main";
-    grid-template-columns:100%;
+    grid-template-areas: "Nav Nav"
+                        "Main Info";
+    grid-template-columns:auto 80%;
     grid-template-row: 50px auto;
     background-color: #f5f5dc;
     font-family: Arial, sans-serif;
@@ -15,10 +14,32 @@ body{
     overflow:hidden;
 }
 
-#nav button img {
+
+#searchDiv{}
+#search{}
+#search_button{}
+#search_icon{
     width:20px;
     height:20px;
 }
+#searchItems{}
+.Search_Item{}
+.searchItemsImage{
+    width:20px;
+    height:20px;
+}
+.Search_Title{}
+
 #main{
     grid-area: Main;
+}
+.track{
+    
+}
+.song_image{
+    width:20px;
+    height:20px;
+}
+#Info{
+    grid-area: Info;
 }
