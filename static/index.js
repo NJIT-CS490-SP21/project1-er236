@@ -82,22 +82,24 @@ function stuff(lyric_url,artist,song_image_url,song_title){
             });
             title.onclick=()=>{
                 if (audio.style.display=="none"){
-                    audioSource.src=track["preview_url"];
-                    audio.load();
-                    audio.play();
-                    audio.style.display = "block";
+                    if(track["preview_url"]!=null){
+                        audioSource.src=track["preview_url"];
+                        audio.load();
+                        audio.play();
+                        audio.style.display = "block";
+                    }
                 }
                 else{
                     audio.pause();
                     audioSource.src="";
                     audio.style.display = "none";
                 }
-               // window.open(track["preview_url"],'popup','width=600,height=600')
             }
             var lyric=document.createElement("div");
-            lyric.classList.add("lyric_Link")
+            lyric.classList.add("lyric_Link");
+            lyric.innerHTML="Lyrics?"
             lyric.onclick=()=>{
-                //window.open(track["preview_url"],'popup','width=600,height=600')
+                lyrics.src=lyric_url
             }
             
             
