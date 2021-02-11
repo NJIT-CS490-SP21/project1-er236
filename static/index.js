@@ -10,6 +10,7 @@ window.onload = (event) => {
     searchDiv=document.getElementById("searchItems");
     audio=document.getElementById("audio");
     audioSource=document.getElementById("audioSource");
+    search();
 };
 function search(){
     var data=JSON.stringify({
@@ -23,6 +24,7 @@ function search(){
     .then(reply=>reply.json())
     .then(response=>{
         searchDiv.innerHTML="";
+        searchDiv.style.display="block";
         response["response"]["hits"].map(item=>{
             var main = document.createElement("div");
             main.classList.add("searchItem");
@@ -35,7 +37,7 @@ function search(){
             image.classList.add("searchItemsImage");
             image.src=item["result"]["song_art_image_url"];
             main.onclick=()=>{
-                searchDiv.innerHTML="";
+                searchDiv.style.display="none";
                 var lyric_content=item["embed_content"];
                 var artist=item["result"]["primary_artist"]["name"];
                 var song_image_url=item["result"]["song_art_image_url"];
@@ -86,22 +88,19 @@ function stuff(lyric_content,artist,song_image_url,song_title){
 
             var music=document.createElement("audio");
             music.classList.add("audio");
-            music.style.display="block";
             music.controls = true;
 
 
             
             var musicSource=document.createElement("source");
-            musicSource.classList.add("audioSource");
             musicSource.src=track["preview_url"];
             music.appendChild(musicSource)
 
             
             
             
-            main.appendChild(img);
             main.appendChild(title);
-            
+            main.appendChild(img);
             main.appendChild(music);
             main.appendChild(lyric);
             mainDiv.appendChild(main)

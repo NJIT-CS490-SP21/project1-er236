@@ -5,16 +5,16 @@
 
 
 </head>
-<body id="body">
+<body>
 
     <div id="nav">
         <div id="searchDiv">
-            <input type="text" placeholder="Search Lyrics" id="search" >
+            <input type="text" placeholder="Search Lyrics" id="search" value="hello">
             <button onclick="search()" id="search_button">
                 <img src={{url_for('static',filename='/images/search_icon.jpg')}} id="search_icon"/>
             </button>
         </div>
-        <div id="searchItems"></div>
+        <div id="searchItems" style="display:none"></div>
     </div>
     <div id="main"></div>
 </body>
