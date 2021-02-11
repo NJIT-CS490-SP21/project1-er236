@@ -16,6 +16,7 @@ def genius(req):
             "Authorization": "Bearer "+os.getenv("genius_token")
         }
     ).json()
+    print(len(song["response"]["hits"]))
     for index in range(len(song["response"]["hits"])):
         track=song["response"]["hits"][index]
         lyric=requests.get(
@@ -24,7 +25,8 @@ def genius(req):
                 "Authorization": "Bearer "+os.getenv("genius_token")
             }
         ).json()
-        song["response"]["hits"][index]["embed_content"]=lyric["response"]["song"]["embed_content"]
+        print(lyric["response"]["song"])
+        break
     return (song)
 
 
@@ -48,6 +50,7 @@ def spotify(req):
     artists=requests.get(
        "https://api.spotify.com/v1/search",
        params={
+          "market":"US",
           "q":req["artist"],
           "type": "artist"
        },
@@ -79,3 +82,6 @@ def spotify(req):
                 song_ids[len(song_ids.keys())]=song
     
     return (song_ids)
+    
+   
+

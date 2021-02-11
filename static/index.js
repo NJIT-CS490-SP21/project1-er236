@@ -8,10 +8,8 @@ window.onload = (event) => {
     mainDiv=document.getElementById("main");
     Lookup=document.getElementById("search");
     searchDiv=document.getElementById("searchItems");
-    lyrics=document.getElementById("lyrics");
     audio=document.getElementById("audio");
     audioSource=document.getElementById("audioSource");
-    search();
 };
 function search(){
     var data=JSON.stringify({
@@ -36,22 +34,23 @@ function search(){
             var image=document.createElement("img");
             image.classList.add("searchItemsImage");
             image.src=item["result"]["song_art_image_url"];
-
             main.onclick=()=>{
-                var lyric_url=item["result"]["url"];
+                searchDiv.innerHTML="";
+                var lyric_content=item["embed_content"];
                 var artist=item["result"]["primary_artist"]["name"];
                 var song_image_url=item["result"]["song_art_image_url"];
                 var song_title = item["result"]["title"];
-                stuff(lyric_url,artist,song_image_url,song_title);
-
+                stuff(lyric_content,artist,song_image_url,song_title);
+               
             }
+            
             main.appendChild(image);
             main.appendChild(title);
             searchDiv.appendChild(main);
         })
     })
 }
-function stuff(lyric_url,artist,song_image_url,song_title){
+function stuff(lyric_content,artist,song_image_url,song_title){
     var data=JSON.stringify({
             "artist":artist,
             "song_title":song_title
@@ -65,7 +64,6 @@ function stuff(lyric_url,artist,song_image_url,song_title){
     .then(response=>{
         mainDiv.innerHTML="";
         for (const index in response){
-            console.log(response[index]);
             var track=response[index];
             
             var main = document.createElement("div");
@@ -80,37 +78,34 @@ function stuff(lyric_url,artist,song_image_url,song_title){
             title.innerHTML=track["name"] +" by " + track["artists"].map(artist=>{
                 return artist["name"];
             });
-            title.onclick=()=>{
-                if (audio.style.display=="none"){
-                    if(track["preview_url"]!=null){
-                        audioSource.src=track["preview_url"];
-                        audio.load();
-                        audio.play();
-                        audio.style.display = "block";
-                    }
-                }
-                else{
-                    audio.pause();
-                    audioSource.src="";
-                    audio.style.display = "none";
-                }
-            }
+
             var lyric=document.createElement("div");
             lyric.classList.add("lyric_Link");
-            lyric.innerHTML="Lyrics?"
-            lyric.onclick=()=>{
-                lyrics.src=lyric_url
-            }
+            lyric.innerHTML=lyric_content;
+            lyric.children[0].children[0].target="_blank";
+
+            var music=document.createElement("audio");
+            music.classList.add("audio");
+            music.style.display="block";
+            music.controls = true;
+
+
+            
+            var musicSource=document.createElement("source");
+            musicSource.classList.add("audioSource");
+            musicSource.src=track["preview_url"];
+            music.appendChild(musicSource)
+
+            
             
             
             main.appendChild(img);
             main.appendChild(title);
+            
+            main.appendChild(music);
             main.appendChild(lyric);
             mainDiv.appendChild(main)
         }
-        audio.pause();
-        audioSource.src="";
-        audio.style.display = "none";
     })
 }
 

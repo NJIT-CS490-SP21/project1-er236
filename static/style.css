@@ -1,8 +1,8 @@
 body{
     display:grid;
-    grid-template-areas: "Nav Nav"
-                        "Main Info";
-    grid-template-columns:auto 80%;
+    grid-template-areas: "Nav"
+                        "Main";
+    grid-template-columns:auto;
     grid-template-row: 50px auto;
     background-color: #f5f5dc;
     font-family: Arial, sans-serif;
@@ -39,7 +39,4 @@ body{
 .song_image{
     width:20px;
     height:20px;
-}
-#Info{
-    grid-area: Info;
 }
