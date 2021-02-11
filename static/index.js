@@ -10,7 +10,6 @@ window.onload = (event) => {
     searchDiv=document.getElementById("searchItems");
     audio=document.getElementById("audio");
     audioSource=document.getElementById("audioSource");
-    search();
 };
 function search(){
     var data=JSON.stringify({
